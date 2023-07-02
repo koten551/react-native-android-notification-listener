@@ -50,7 +50,7 @@ public class RNAndroidNotificationListener extends NotificationListenerService {
                 threshold++;
             }
         }
-        Log.d(TAG, "threshold: " + threshold);
+        Log.d(TAG, "threshold: " + threshold + "/" + pixels1.length);
         Gson gson = new Gson();
         String serializedNotification = gson.toJson(notification);
 
