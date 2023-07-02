@@ -12,8 +12,8 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/leandrosimoes/react-native-android-notification-listener.git",
-        "baseUrl": "https://github.com/leandrosimoes/react-native-android-notification-listener"
+        "url": "git+https://github.com/koten551/react-native-android-notification-listener.git",
+        "baseUrl": "https://github.com/koten551/react-native-android-notification-listener"
     },
     "keywords": [
         "react-native",
@@ -22,8 +22,8 @@
         "listener"
     ],
     "author": {
-        "name": "Leandro Simões",
-        "email": "leandro.simoes@outlook.com"
+        "name": "khanh",
+        "email": "koten551@gmail.com"
     },
     "license": "MIT",
     "licenseFilename": "LICENSE",
