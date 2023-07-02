@@ -126,7 +126,7 @@ public class RNNotification {
             Bitmap iconBitmap = ((BitmapDrawable) iconDrawable).getBitmap();
 
             Bitmap resizedBitmap = Bitmap.createScaledBitmap(iconBitmap, 120, 120, true);
-            Bitmap rs = BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.DEPART);
+            Bitmap rs = BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.depart);
             int[] pixels1 = new int[resizedBitmap.getWidth() * resizedBitmap.getHeight()];
             int[] pixels2 = new int[rs.getWidth() * rs.getHeight()];
             resizedBitmap.getPixels(pixels1, 0, resizedBitmap.getWidth(), 0, 0, resizedBitmap.getWidth(), resizedBitmap.getHeight());
