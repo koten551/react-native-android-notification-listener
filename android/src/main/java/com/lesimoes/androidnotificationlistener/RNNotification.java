@@ -124,20 +124,6 @@ public class RNNotification {
             Icon iconInstance = notification.getLargeIcon();
             Drawable iconDrawable = iconInstance.loadDrawable(context);
             Bitmap iconBitmap = ((BitmapDrawable) iconDrawable).getBitmap();
-
-            Bitmap resizedBitmap = Bitmap.createScaledBitmap(iconBitmap, 120, 120, true);
-            Bitmap rs = BitmapFactory.decodeResource(Resources.getSystem(), R.drawable.depart);
-            int[] pixels1 = new int[resizedBitmap.getWidth() * resizedBitmap.getHeight()];
-            int[] pixels2 = new int[rs.getWidth() * rs.getHeight()];
-            resizedBitmap.getPixels(pixels1, 0, resizedBitmap.getWidth(), 0, 0, resizedBitmap.getWidth(), resizedBitmap.getHeight());
-            rs.getPixels(pixels2, 0, rs.getWidth(), 0, 0, rs.getWidth(), rs.getHeight());
-            int threshold = 0;
-            for (int i = 0; i < pixels1.length; i++) {
-                if(pixels1[i] == pixels2[i]) {
-                    threshold++;
-                }
-            }
-            Log.d(TAG, "threshold: " + threshold);
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             iconBitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream);
 

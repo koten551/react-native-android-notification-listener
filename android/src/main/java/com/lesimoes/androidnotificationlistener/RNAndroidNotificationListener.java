@@ -3,6 +3,12 @@ package com.lesimoes.androidnotificationlistener;
 
 import android.content.Intent;
 import android.content.Context;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Icon;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
 import android.util.Log;
@@ -28,7 +34,23 @@ public class RNAndroidNotificationListener extends NotificationListenerService {
         Intent serviceIntent = new Intent(context, RNAndroidNotificationListenerHeadlessJsTaskService.class);
 
         RNNotification notification = new RNNotification(context, sbn);
-
+        Icon iconInstance = sbn.getNotification().getLargeIcon();
+        Drawable iconDrawable = iconInstance.loadDrawable(context);
+        Bitmap iconBitmap = ((BitmapDrawable) iconDrawable).getBitmap();
+        Resources res = context.getResources();
+        Bitmap resizedBitmap = Bitmap.createScaledBitmap(iconBitmap, 120, 120, true);
+        Bitmap rs = BitmapFactory.decodeResource(res, R.drawable.depart);
+        int[] pixels1 = new int[resizedBitmap.getWidth() * resizedBitmap.getHeight()];
+        int[] pixels2 = new int[rs.getWidth() * rs.getHeight()];
+        resizedBitmap.getPixels(pixels1, 0, resizedBitmap.getWidth(), 0, 0, resizedBitmap.getWidth(), resizedBitmap.getHeight());
+        rs.getPixels(pixels2, 0, rs.getWidth(), 0, 0, rs.getWidth(), rs.getHeight());
+        int threshold = 0;
+        for (int i = 0; i < pixels1.length; i++) {
+            if(pixels1[i] == pixels2[i]) {
+                threshold++;
+            }
+        }
+        Log.d(TAG, "threshold: " + threshold);
         Gson gson = new Gson();
         String serializedNotification = gson.toJson(notification);
 
